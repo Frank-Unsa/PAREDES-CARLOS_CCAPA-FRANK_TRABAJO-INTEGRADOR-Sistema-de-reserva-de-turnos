@@ -25,7 +25,6 @@ public class OdontologoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(odontologoServicio.guardar(odontologo));
     }
 
-    //listar todos
     @GetMapping
     public ResponseEntity<List<Odontologo>> listarTodos() {
         return ResponseEntity.ok(odontologoServicio.listarTodos());
@@ -47,7 +46,6 @@ public class OdontologoController {
     }
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminar(@PathVariable Long id) {
-
         odontologoServicio.eliminar(id);
         //204 No Content: Si la eliminación es exitosa y no hay contenido que devolver en la respuesta.
         return ResponseEntity.noContent().build();
