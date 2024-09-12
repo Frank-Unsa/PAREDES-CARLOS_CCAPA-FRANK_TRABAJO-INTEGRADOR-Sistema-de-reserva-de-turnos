@@ -1,11 +1,10 @@
 package com.example.Trabajo_Integrador_2024.service.impl;
-
-
 import com.example.Trabajo_Integrador_2024.entity.Odontologo;
 import com.example.Trabajo_Integrador_2024.exception.DuplicateResourceException;
 import com.example.Trabajo_Integrador_2024.exception.ResourceNotFoundException;
 import com.example.Trabajo_Integrador_2024.repository.IOdontologoRepository;
 import com.example.Trabajo_Integrador_2024.service.IOdontologoServicio;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,10 +13,9 @@ import java.util.Optional;
 
 @Service
 public class OdontologoServicioImpl implements IOdontologoServicio {
-
+    private static  final Logger LOGGER=Logger.getLogger(OdontologoServicioImpl.class);
     @Autowired
     private IOdontologoRepository iOdontologoRepository;
-
 
     @Override
     public Odontologo guardar(Odontologo odontologo) throws DuplicateResourceException {
@@ -25,11 +23,11 @@ public class OdontologoServicioImpl implements IOdontologoServicio {
         if(existeMatricula(odontologo.getMatricula()))
             throw new DuplicateResourceException("La matricula "+ matricula +" ya existe");
         else {
+            LOGGER.info("Odontologo guardado: "+ odontologo.getNombre() + " "+ odontologo.getApellido());
             return iOdontologoRepository.save(odontologo);
         }
 
     }
-
     @Override
     public Odontologo buscarPorId(Long id) throws ResourceNotFoundException {
         Optional<Odontologo> odontologoBuscado = iOdontologoRepository.findById(id);
@@ -39,8 +37,6 @@ public class OdontologoServicioImpl implements IOdontologoServicio {
             throw new ResourceNotFoundException("No se encontro el odontologo con id : " + id);
         }
     }
-
-
     @Override
     public void eliminar(Long id) throws ResourceNotFoundException  {
         if(iOdontologoRepository.existsById(id)){
@@ -50,19 +46,18 @@ public class OdontologoServicioImpl implements IOdontologoServicio {
         }
 
     }
+    public Odontologo actualizar(Odontologo odontologo) throws ResourceNotFoundException, DuplicateResourceException {
+        if (iOdontologoRepository.existsById(odontologo.getId())) {
 
-public Odontologo actualizar(Odontologo odontologo) throws ResourceNotFoundException, DuplicateResourceException {
-    if (iOdontologoRepository.existsById(odontologo.getId())) {
-
-        Odontologo odontologoExistente = iOdontologoRepository.findByMatricula(odontologo.getMatricula());
-        if (odontologoExistente != null && !odontologoExistente.getId().equals(odontologo.getId())) {
-            throw new DuplicateResourceException("La matrícula " + odontologo.getMatricula() + " ya existe.");
+            Odontologo odontologoExistente = iOdontologoRepository.findByMatricula(odontologo.getMatricula());
+            if (odontologoExistente != null && !odontologoExistente.getId().equals(odontologo.getId())) {
+                throw new DuplicateResourceException("La matrícula " + odontologo.getMatricula() + " ya existe.");
+            }
+            return iOdontologoRepository.save(odontologo);
+        } else {
+            throw new ResourceNotFoundException("El odontólogo con id: " + odontologo.getId() + " no existe.");
         }
-        return iOdontologoRepository.save(odontologo);
-    } else {
-        throw new ResourceNotFoundException("El odontólogo con id: " + odontologo.getId() + " no existe.");
     }
-}
 
     @Override
     public List<Odontologo> listarTodos() {
@@ -82,8 +77,4 @@ public Odontologo actualizar(Odontologo odontologo) throws ResourceNotFoundExcep
     public Boolean existeMatricula(String matricula) {
         return iOdontologoRepository.existsByMatricula(matricula);
     }
-
-
-
-
 }

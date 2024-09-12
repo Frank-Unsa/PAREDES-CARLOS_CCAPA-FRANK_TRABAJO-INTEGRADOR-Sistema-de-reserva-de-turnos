@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
+import org.junit.jupiter.api.BeforeEach;
 import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -21,11 +21,12 @@ class PacienteServicioImplTest {
     private IPacienteServicio pacienteServicio;
     @Autowired
     private IPacienteRepository iPacienteRepository;
-    //    @BeforeEach
-//    void setUp() {
-//        // Limpia el repo de odontologo antes de cada test
-//        iPacienteRepository.deleteAll();
-//    }
+
+    @BeforeEach
+    void setUp() {
+        // Limpia el repo de paciente antes de cada test
+        iPacienteRepository.deleteAll();
+    }
     @Test
     void guardar() {
         // Arrange

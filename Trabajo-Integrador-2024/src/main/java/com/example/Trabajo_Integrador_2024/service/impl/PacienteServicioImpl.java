@@ -38,7 +38,6 @@ public class PacienteServicioImpl implements IPacienteServicio {
 
     @Override
     public List<Paciente> listarTodos() {
-
         return iPacienteRepository.findAll();
     }
     @Override
