@@ -4,6 +4,7 @@ import com.example.Trabajo_Integrador_2024.exception.DuplicateResourceException;
 import com.example.Trabajo_Integrador_2024.exception.ResourceNotFoundException;
 import com.example.Trabajo_Integrador_2024.repository.IPacienteRepository;
 import com.example.Trabajo_Integrador_2024.service.IPacienteServicio;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +13,7 @@ import java.util.Optional;
 
 @Service
 public class PacienteServicioImpl implements IPacienteServicio {
-
+    private static  final Logger LOGGER=Logger.getLogger(PacienteServicioImpl.class);
     @Autowired
     private IPacienteRepository iPacienteRepository;
 
@@ -21,10 +22,10 @@ public class PacienteServicioImpl implements IPacienteServicio {
         if (iPacienteRepository.existsByDni(paciente.getDni()))
             throw new DuplicateResourceException("El paciente con Dni:"+ paciente.getDni()+ " ya existe");
         else {
+            LOGGER.info("Paciente guardado: " + paciente.getNombre() +" "+paciente.getApellido());
             return iPacienteRepository.save(paciente);
         }
     }
-
     @Override
     public Paciente buscarPorId(Long id) throws ResourceNotFoundException {
         Optional<Paciente> pacienteBuscado = iPacienteRepository.findById(id);
@@ -35,7 +36,6 @@ public class PacienteServicioImpl implements IPacienteServicio {
         }
 
     }
-
     @Override
     public List<Paciente> listarTodos() {
         return iPacienteRepository.findAll();
@@ -43,7 +43,6 @@ public class PacienteServicioImpl implements IPacienteServicio {
     @Override
     public Paciente actualizar(Paciente paciente) throws ResourceNotFoundException, DuplicateResourceException {
         Long idPaciente = paciente.getId();
-
         if (iPacienteRepository.existsById(idPaciente)) {
             Paciente pacienteExistente = iPacienteRepository.findByDni(paciente.getDni());
             if (pacienteExistente != null && !pacienteExistente.getId().equals(paciente.getId())) {
@@ -59,11 +58,11 @@ public class PacienteServicioImpl implements IPacienteServicio {
     public void eliminar(Long id) throws ResourceNotFoundException {
         Optional<Paciente> pacienteBuscadoE = iPacienteRepository.findById(id);
         if (pacienteBuscadoE.isPresent()) {
+            LOGGER.info("Se a eliminadp el paciente con ID " + id);
             iPacienteRepository.deleteById(id);
         } else {
             throw new ResourceNotFoundException ("No se encontro el paciente con id: " + id);
         }
-
     }
     @Override
     public Boolean existeDni(String dni) {

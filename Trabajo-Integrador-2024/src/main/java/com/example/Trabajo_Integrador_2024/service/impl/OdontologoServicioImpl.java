@@ -40,6 +40,7 @@ public class OdontologoServicioImpl implements IOdontologoServicio {
     @Override
     public void eliminar(Long id) throws ResourceNotFoundException  {
         if(iOdontologoRepository.existsById(id)){
+            LOGGER.info("Odontologo guardado con ID: " +id);
             iOdontologoRepository.deleteById(id);
         }else {
             throw new ResourceNotFoundException("No se encontro el odontologo con id: "+id);

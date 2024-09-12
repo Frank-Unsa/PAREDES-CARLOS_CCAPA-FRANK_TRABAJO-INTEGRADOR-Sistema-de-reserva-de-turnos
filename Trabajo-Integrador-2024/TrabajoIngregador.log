@@ -1,3 +1,12 @@
 [2024-09-12 17:31:59] [ INFO ] [OdontologoServicioImpl:26] Odontologo guardado: com.example.Trabajo_Integrador_2024.entity.Odontologo@35749db
 [2024-09-12 17:33:54] [ INFO ] [OdontologoServicioImpl:26] Odontologo guardado: cheto2 chepar1
 [2024-09-12 17:52:47] [ INFO ] [OdontologoServicioImpl:26] Odontologo guardado: fra fra
+[2024-09-12 18:06:00] [ INFO ] [OdontologoServicioImpl:26] Odontologo guardado: cheto2 chepar1
+[2024-09-12 18:06:06] [ INFO ] [OdontologoServicioImpl:26] Odontologo guardado: cheto2 chepar1
+[2024-09-12 18:08:51] [ INFO ] [OdontologoServicioImpl:26] Odontologo guardado: Dr. Raul Ccapa
+[2024-09-12 18:10:10] [ INFO ] [OdontologoServicioImpl:26] Odontologo guardado: Dr. Kenyo Ccapa
+[2024-09-12 18:28:46] [ INFO ] [OdontologoServicioImpl:26] Odontologo guardado: Frank Ccapa
+[2024-09-12 18:28:55] [ INFO ] [OdontologoServicioImpl:26] Odontologo guardado: Frank2 Ccapa2
+[2024-09-12 18:29:17] [ INFO ] [PacienteServicioImpl:25] Paciente guardado: Fernando Ccapa
+[2024-09-12 18:29:25] [ INFO ] [PacienteServicioImpl:25] Paciente guardado: Raul Ccapa
+[2024-09-12 18:29:39] [ INFO ] [TurnoServicioImpl:54] El turno ha sido guardado con el Paciente con ID:1  y Odontologo: 1 con fecha: 2024-05-08

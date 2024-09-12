@@ -9,6 +9,7 @@ import com.example.Trabajo_Integrador_2024.repository.IOdontologoRepository;
 import com.example.Trabajo_Integrador_2024.repository.IPacienteRepository;
 import com.example.Trabajo_Integrador_2024.repository.ITurnoRepository;
 import com.example.Trabajo_Integrador_2024.service.ITurnoServicio;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +20,7 @@ import java.util.Optional;
 
 @Service
 public class TurnoServicioImpl implements ITurnoServicio {
-
+    private static  final Logger LOGGER=Logger.getLogger(TurnoServicioImpl.class);
     @Autowired
     private ITurnoRepository iTurnoRepository;
     @Autowired
@@ -33,7 +34,6 @@ public class TurnoServicioImpl implements ITurnoServicio {
         Long idOdontologo = turno.getOdontologo().getId();
         LocalDate fechaTurno = turno.getFecha();
 
-        // Verificar existencia del paciente y odontólogo
         if (idPaciente == null || !iPacienteRepository.existsById(idPaciente) ) {
             throw new BadRequestException("El paciente con ID " + idPaciente + " no existe.");
         }
@@ -43,17 +43,15 @@ public class TurnoServicioImpl implements ITurnoServicio {
         if (fechaTurno == null) {
             throw new BadRequestException("La fecha del turno no puede estar vacía.");
         }
-        // Verificamos si ya existe un turno en la misma fecha con el mismo paciente y otro odontólogo
         Turno conflictoPaciente = iTurnoRepository.findByPacienteAndFecha(idPaciente, fechaTurno);
         if (conflictoPaciente != null && !conflictoPaciente.getId().equals(turno.getId())) {
             throw new ConflictException("El paciente con ID " + idPaciente + " ya tiene un turno en la fecha " + fechaTurno);
         }
-        // Verificamos si ya existe un turno en la misma fecha con el mismo odontólogo y otro paciente
         Turno conflictoOdontologo = iTurnoRepository.findByOdontologoAndFecha(idOdontologo, fechaTurno);
         if (conflictoOdontologo != null && !conflictoOdontologo.getId().equals(turno.getId())) {
             throw new ConflictException("El odontólogo con ID " + idOdontologo + " ya tiene un turno en la fecha " + fechaTurno );
         }
-
+        LOGGER.info("El turno ha sido guardado con el Paciente con ID:" +idPaciente +" " +" y Odontologo: "+ idOdontologo +" con fecha: "+ fechaTurno);
         return iTurnoRepository.save(turno);
     }
     @Override
@@ -75,6 +73,7 @@ public class TurnoServicioImpl implements ITurnoServicio {
     @Override
     public void eliminar(Long id) {
         if (iTurnoRepository.existsById(id)){
+            LOGGER.info("El turno con ID: " + id + " a sido eliminado");
             iTurnoRepository.deleteById(id);
         }
         else {
@@ -84,18 +83,13 @@ public class TurnoServicioImpl implements ITurnoServicio {
     }
     @Override
     public Turno actualizar(Turno turno) throws ResourceNotFoundException, ConflictException {
-        // Verifica si el turno existe antes de actualizar
         if (!iTurnoRepository.existsById(turno.getId())) {
             throw new ResourceNotFoundException("No se encontró el turno con id: " + turno.getId());
         }
-
-        // Verificamos si ya existe un turno en la misma fecha con el mismo odontólogo y otro paciente
         Turno conflictoOdontologo = iTurnoRepository.findByOdontologoAndFecha(turno.getOdontologo().getId(), turno.getFecha());
         if (conflictoOdontologo != null && !conflictoOdontologo.getId().equals(turno.getId())) {
             throw new ConflictException("El odontólogo con ID " + turno.getOdontologo().getId() + " ya tiene un turno en la fecha " + turno.getFecha());
         }
-
-        // Verificamos si ya existe un turno en la misma fecha con el mismo paciente y otro odontólogo
         Turno conflictoPaciente = iTurnoRepository.findByPacienteAndFecha(turno.getPaciente().getId(), turno.getFecha());
         if (conflictoPaciente != null && !conflictoPaciente.getId().equals(turno.getId())) {
             throw new ConflictException("El paciente con ID " + turno.getPaciente().getId() + " ya tiene un turno en la fecha " + turno.getFecha());
