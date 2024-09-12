@@ -16,11 +16,9 @@ public class PacienteServicioImpl implements IPacienteServicio {
     @Autowired
     private IPacienteRepository iPacienteRepository;
 
-
-
     @Override
     public Paciente guardar(Paciente paciente) throws DuplicateResourceException {
-        if (existeDni(paciente.getDni()))
+        if (iPacienteRepository.existsByDni(paciente.getDni()))
             throw new DuplicateResourceException("El paciente con Dni:"+ paciente.getDni()+ " ya existe");
         else {
             return iPacienteRepository.save(paciente);
@@ -43,29 +41,28 @@ public class PacienteServicioImpl implements IPacienteServicio {
 
         return iPacienteRepository.findAll();
     }
-
-//    @Override
-//    public void actualizar(Paciente paciente) {
-//        iPacienteRepository.save(paciente);
-//    }
     @Override
-    public Paciente actualizar(Paciente paciente) {
-        // Verifica si el odontólogo existe antes de actualizar
-        if (iPacienteRepository.existsById(paciente.getId())) {
+    public Paciente actualizar(Paciente paciente) throws ResourceNotFoundException, DuplicateResourceException {
+        Long idPaciente = paciente.getId();
+
+        if (iPacienteRepository.existsById(idPaciente)) {
+            Paciente pacienteExistente = iPacienteRepository.findByDni(paciente.getDni());
+            if (pacienteExistente != null && !pacienteExistente.getId().equals(paciente.getId())) {
+                throw new DuplicateResourceException("El DNI " + paciente.getDni() + " ya está registrado por otro paciente.");
+            }
             return iPacienteRepository.save(paciente);
         } else {
-            throw new RuntimeException("El paciente no existe");//crear excepcion
+            throw new ResourceNotFoundException("No se encontró el paciente con id: " + idPaciente);
         }
     }
 
     @Override
-    public Boolean eliminar(Long id) {
+    public void eliminar(Long id) throws ResourceNotFoundException {
         Optional<Paciente> pacienteBuscadoE = iPacienteRepository.findById(id);
         if (pacienteBuscadoE.isPresent()) {
             iPacienteRepository.deleteById(id);
-            return true; // Se eliminó el paciente
         } else {
-            return false; // No se encontró el paciente
+            throw new ResourceNotFoundException ("No se encontro el paciente con id: " + id);
         }
 
     }

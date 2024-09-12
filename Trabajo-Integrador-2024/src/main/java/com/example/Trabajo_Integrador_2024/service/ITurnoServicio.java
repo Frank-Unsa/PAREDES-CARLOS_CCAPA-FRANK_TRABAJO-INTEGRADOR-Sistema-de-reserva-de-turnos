@@ -5,7 +5,6 @@ import com.example.Trabajo_Integrador_2024.entity.Turno;
 import java.util.List;
 
 public interface ITurnoServicio {
-    //CRUD
     Turno guardar(Turno turno);
     Turno buscarPorId(Long id);
     List<Turno> listarTodos();

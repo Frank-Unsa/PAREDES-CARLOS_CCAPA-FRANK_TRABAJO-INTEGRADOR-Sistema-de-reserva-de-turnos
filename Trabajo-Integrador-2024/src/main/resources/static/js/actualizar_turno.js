@@ -95,18 +95,4 @@ window.addEventListener('load', function () {
             .catch(error => console.error('Error al cargar turno:', error));
     };
 
-    window.eliminarTurno = function(id) {
-        fetch(`/turnos/${id}`, {
-            method: 'DELETE'
-        })
-        .then(response => {
-            if (response.ok) {
-                document.getElementById('response').innerHTML = 'Turno eliminado con éxito.';
-                cargarTurnos(); // Recargar la lista de turnos
-            } else {
-                throw new Error('Error al eliminar turno');
-            }
-        })
-        .catch(error => document.getElementById('response').innerHTML = 'Error al eliminar turno: ' + error);
-    }
 });

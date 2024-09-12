@@ -15,10 +15,6 @@ public class OdontologoController {
 
     @Autowired
     private IOdontologoServicio odontologoServicio;
-
-
-    //RequestParam url ? parametro = X & parametro = X
-    //PathVariable url/pathVariable
     @GetMapping("/{id}")
     public ResponseEntity<Odontologo> buscarPorId(@PathVariable Long id) {
         return ResponseEntity.ok(odontologoServicio.buscarPorId(id));
@@ -48,7 +44,6 @@ public class OdontologoController {
         odontologo.setId(id);
         this.odontologoServicio.actualizar(odontologo);
         return ResponseEntity.status(HttpStatus.OK).body(odontologoServicio.actualizar(odontologo));
-        //return ResponseEntity.noContent().build();
     }
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminar(@PathVariable Long id) {

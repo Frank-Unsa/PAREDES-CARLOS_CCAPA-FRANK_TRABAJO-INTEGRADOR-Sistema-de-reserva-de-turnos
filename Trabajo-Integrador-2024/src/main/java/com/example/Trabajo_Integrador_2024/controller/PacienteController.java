@@ -15,8 +15,6 @@ public class PacienteController {
     @Autowired
     private IPacienteServicio iPacienteServicio;
 
-
-
     @GetMapping("/{id}")
     public ResponseEntity<Paciente> consultarPorId(@PathVariable Long id) {
         return ResponseEntity.ok(iPacienteServicio.buscarPorId(id));
@@ -24,38 +22,28 @@ public class PacienteController {
 
     @PostMapping
     public ResponseEntity<Paciente> guardar(@RequestBody Paciente paciente) {
-        return ResponseEntity.ok(iPacienteServicio.guardar(paciente));
+        return ResponseEntity.status(HttpStatus.CREATED).body(iPacienteServicio.guardar(paciente));
     }
     @GetMapping
     public ResponseEntity<List<Paciente>> listarTodos(){
         return ResponseEntity.ok(iPacienteServicio.listarTodos());
     }
-//    @DeleteMapping("/{id}")
-//    public ResponseEntity<Void> eliminarPorId(@RequestParam Long id){
-//        return ResponseEntity.ok(iPacienteServicio.eliminar(id));
-//    }
     @DeleteMapping("/{id}")
-    public ResponseEntity eliminar(@PathVariable Long id) {
-        ResponseEntity response = null;
-        if (iPacienteServicio.eliminar(id))
-            response = ResponseEntity.status(HttpStatus.OK).build();
-        else
-            response = ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-
-        return response;
+    public ResponseEntity<Void> eliminar(@PathVariable Long id) {
+        iPacienteServicio.eliminar(id);
+        //204 No Content: Si la eliminación es exitosa y no hay contenido que devolver en la respuesta.
+        return ResponseEntity.noContent().build();
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Void> actualizarPacientePorId(@PathVariable Long id, @RequestBody Paciente paciente) {
+    public ResponseEntity<Paciente> actualizarPacientePorId(@PathVariable Long id, @RequestBody Paciente paciente) {
         paciente.setId(id);
         this.iPacienteServicio.actualizar(paciente);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.status(HttpStatus.OK).body(iPacienteServicio.actualizar(paciente));
     }
     @PutMapping
     public ResponseEntity<Paciente> actualizarPaciente(@RequestBody Paciente paciente){
         return ResponseEntity.ok(iPacienteServicio.actualizar(paciente));
     }
-
-
 
 }

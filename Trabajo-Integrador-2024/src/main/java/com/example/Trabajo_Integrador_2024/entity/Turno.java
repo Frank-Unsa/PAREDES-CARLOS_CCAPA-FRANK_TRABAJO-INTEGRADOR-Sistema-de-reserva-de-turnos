@@ -19,9 +19,12 @@ public class Turno {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    //FetchType.EAGER -> la entidad relacionada se carga de manera inmediata (eagerly)
+    //cuando se recupera la entidad principal de la base de datos.
+
+    @ManyToOne(fetch = FetchType.EAGER)
     private Paciente paciente;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Odontologo odontologo;
     private LocalDate fecha;
 

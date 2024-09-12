@@ -21,4 +21,8 @@ public class GlobalException {
         // con el estado actual del recurso.
         return ResponseEntity.status(HttpStatus.CONFLICT).body(exception.getMessage());
     }
+    @ExceptionHandler(ConflictException.class)
+    public ResponseEntity<String> processConflictException(ConflictException exception) {
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(exception.getMessage());
+    }
 }

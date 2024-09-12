@@ -11,6 +11,6 @@ public interface IPacienteServicio {
     Paciente buscarPorId(Long id);
     List<Paciente> listarTodos();
     Paciente actualizar(Paciente paciente);
-    Boolean eliminar(Long id);
+    void eliminar(Long id);
     Boolean existeDni(String dni);
 }

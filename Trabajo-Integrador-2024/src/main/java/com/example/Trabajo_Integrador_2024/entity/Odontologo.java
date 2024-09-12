@@ -25,7 +25,9 @@ public class Odontologo {
     private String nombre;
     private String apellido;
     private String matricula;
-    @OneToMany(mappedBy = "odontologo")
+
+    // orphanRemoval estoy elimnando Turnos huérfanos  automáticamente si se eliminan de la colección turnoSet
+    @OneToMany(mappedBy = "odontologo", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
     private Set<Turno> turnoSet = new HashSet<>();
 }

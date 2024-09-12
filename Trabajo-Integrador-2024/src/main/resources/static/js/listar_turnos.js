@@ -22,7 +22,7 @@ window.addEventListener('load', function () {
                     turnoRow.id = tr_id;
 
                     // Botón para eliminar turno
-                    const deleteButton = `<button id="btn_delete_${turno.id}" type="button" onclick="eliminarTurno(${turno.id})" class="btn btn-danger btn_delete">&times</button>`;
+                    const deleteButton = `<button id="btn_delete_${turno.id}" type="button" onclick="deleteBy(${turno.id})" class="btn btn-danger btn_delete">&times</button>`;
 
                     // Botón para actualizar turno
                     const updateButton = `<button id="btn_id_${turno.id}" type="button" onclick="editarTurno(${turno.id})" class="btn btn-info btn_id">${turno.id}</button>`;

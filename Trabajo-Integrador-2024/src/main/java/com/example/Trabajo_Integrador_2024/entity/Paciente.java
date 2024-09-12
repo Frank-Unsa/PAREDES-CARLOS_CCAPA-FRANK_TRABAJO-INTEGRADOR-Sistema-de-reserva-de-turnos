@@ -30,8 +30,8 @@ public class Paciente {
     //estoy mapeando la relación para que 1 paciente tenga 1 solo domicilio
     @OneToOne(cascade = CascadeType.ALL)
     private Domicilio domicilio;
-
-    @OneToMany(mappedBy = "paciente")
+    // orphanRemoval estoy elimnando Turnos huérfanos  automáticamente si se eliminan de la colección turnoSet
+    @OneToMany(mappedBy = "paciente", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
     private Set<Turno> turnoSet = new HashSet<>();
 

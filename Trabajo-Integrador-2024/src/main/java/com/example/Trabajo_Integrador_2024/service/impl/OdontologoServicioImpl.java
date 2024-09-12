@@ -25,7 +25,6 @@ public class OdontologoServicioImpl implements IOdontologoServicio {
         if(existeMatricula(odontologo.getMatricula()))
             throw new DuplicateResourceException("La matricula "+ matricula +" ya existe");
         else {
-            // logger (odontologo guardado: )
             return iOdontologoRepository.save(odontologo);
         }
 
@@ -33,43 +32,37 @@ public class OdontologoServicioImpl implements IOdontologoServicio {
 
     @Override
     public Odontologo buscarPorId(Long id) throws ResourceNotFoundException {
-        //va a buscar al odontologo y lo va a guardar en odontologoBuscado
-        //o va a guardar un null en el odontologoBuscado
         Optional<Odontologo> odontologoBuscado = iOdontologoRepository.findById(id);
         if (odontologoBuscado.isPresent()) {
             return odontologoBuscado.get();
         } else {
-            //aca vamos a lanzar las excepciones
-            //return null;
             throw new ResourceNotFoundException("No se encontro el odontologo con id : " + id);
         }
     }
 
 
     @Override
-    public void eliminar(Long id) {
-        iOdontologoRepository.deleteById(id);
+    public void eliminar(Long id) throws ResourceNotFoundException  {
+        if(iOdontologoRepository.existsById(id)){
+            iOdontologoRepository.deleteById(id);
+        }else {
+            throw new ResourceNotFoundException("No se encontro el odontologo con id: "+id);
+        }
+
     }
 
-//    @Override
-//    public void actualizar(Odontologo odontologo) {
-//
-//        if (odontologo.getId() != null) {
-//            this.iOdontologoRepository.save(odontologo);
-//        } else {
-//            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "No permitido");
-//        }
-//
-//    }
-    @Override
-    public Odontologo actualizar(Odontologo odontologo) {
-        // Verifica si el odontólogo existe antes de actualizar
-        if (iOdontologoRepository.existsById(odontologo.getId())) {
-            return iOdontologoRepository.save(odontologo);
-        } else {
-            throw new RuntimeException("El odontólogo no existe");
+public Odontologo actualizar(Odontologo odontologo) throws ResourceNotFoundException, DuplicateResourceException {
+    if (iOdontologoRepository.existsById(odontologo.getId())) {
+
+        Odontologo odontologoExistente = iOdontologoRepository.findByMatricula(odontologo.getMatricula());
+        if (odontologoExistente != null && !odontologoExistente.getId().equals(odontologo.getId())) {
+            throw new DuplicateResourceException("La matrícula " + odontologo.getMatricula() + " ya existe.");
         }
+        return iOdontologoRepository.save(odontologo);
+    } else {
+        throw new ResourceNotFoundException("El odontólogo con id: " + odontologo.getId() + " no existe.");
     }
+}
 
     @Override
     public List<Odontologo> listarTodos() {
@@ -77,8 +70,13 @@ public class OdontologoServicioImpl implements IOdontologoServicio {
     }
 
     @Override
-    public Odontologo buscarPorMatricula(String matricula) {
-        return iOdontologoRepository.findByMatricula(matricula);
+    public Odontologo buscarPorMatricula(String matricula) throws ResourceNotFoundException {
+        Odontologo odontologoBuscadoMatricula = iOdontologoRepository.findByMatricula(matricula);
+        if (odontologoBuscadoMatricula != null) {
+            return odontologoBuscadoMatricula;
+        } else {
+            throw new ResourceNotFoundException("No se encontro el odontologo con matricula : " + matricula);
+        }
     }
     @Override
     public Boolean existeMatricula(String matricula) {
