@@ -42,3 +42,19 @@
 [2024-09-12 20:42:25] [ INFO ] [PacienteServicioImpl:25] Paciente guardado: Fernando Ccapa
 [2024-09-12 20:42:25] [ INFO ] [PacienteServicioImpl:25] Paciente guardado: Fernando Ccapa
 [2024-09-12 20:42:25] [ INFO ] [PacienteServicioImpl:25] Paciente guardado: Fernando Ccapa
+[2024-09-12 20:46:41] [ INFO ] [OdontologoServicioImpl:26] Odontologo guardado: Frank Ccapa
+[2024-09-12 20:50:46] [ INFO ] [OdontologoServicioImpl:26] Odontologo guardado: Fernando Ccapa
+[2024-09-12 20:51:01] [ INFO ] [OdontologoServicioImpl:26] Odontologo guardado: Fernando Ccapa
+[2024-09-12 20:51:01] [ INFO ] [OdontologoServicioImpl:26] Odontologo guardado: Carlos Ccapa
+[2024-09-12 20:51:01] [ INFO ] [OdontologoServicioImpl:43] Odontologo guardado con ID: 2
+[2024-09-12 20:51:01] [ INFO ] [OdontologoServicioImpl:26] Odontologo guardado: Frank Ccapa
+[2024-09-12 20:52:12] [ INFO ] [OdontologoServicioImpl:26] Odontologo guardado: Frank Ccapa
+[2024-09-12 20:52:12] [ INFO ] [OdontologoServicioImpl:43] Odontologo guardado con ID: 1
+[2024-09-12 20:52:29] [ INFO ] [OdontologoServicioImpl:26] Odontologo guardado: Fernando Ccapa
+[2024-09-12 20:52:29] [ INFO ] [OdontologoServicioImpl:26] Odontologo guardado: Frank Ccapa
+[2024-09-12 20:52:29] [ INFO ] [OdontologoServicioImpl:43] Odontologo guardado con ID: 2
+[2024-09-12 20:52:29] [ INFO ] [OdontologoServicioImpl:26] Odontologo guardado: Frank Ccapa
+[2024-09-12 20:56:39] [ INFO ] [OdontologoServicioImpl:26] Odontologo guardado: Fernando Ccapa
+[2024-09-12 20:56:39] [ INFO ] [OdontologoServicioImpl:26] Odontologo guardado: Frank Ccapa
+[2024-09-12 20:56:39] [ INFO ] [OdontologoServicioImpl:43] Odontologo guardado con ID: 2
+[2024-09-12 20:56:39] [ INFO ] [OdontologoServicioImpl:26] Odontologo guardado: Frank Ccapa

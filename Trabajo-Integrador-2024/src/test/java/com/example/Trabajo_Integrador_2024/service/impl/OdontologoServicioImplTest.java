@@ -1,6 +1,7 @@
 package com.example.Trabajo_Integrador_2024.service.impl;
 
 import com.example.Trabajo_Integrador_2024.entity.Odontologo;
+import com.example.Trabajo_Integrador_2024.entity.Paciente;
 import com.example.Trabajo_Integrador_2024.exception.DuplicateResourceException;
 import com.example.Trabajo_Integrador_2024.exception.ResourceNotFoundException;
 import com.example.Trabajo_Integrador_2024.repository.IOdontologoRepository;
@@ -26,31 +27,16 @@ class OdontologoServicioImplTest {
         // Limpia el repo de odontologo antes de cada test
         odontologoRepository.deleteAll();
     }
-    @Test
-    void guardar()  {
-
-        // Arrange
-
-        // Dado un odontólogo con datos válidos
+    private Odontologo cargarDatosPrimerOdontologo(){
         Odontologo odontologo = new Odontologo();
         odontologo.setNombre("Frank");
         odontologo.setApellido("Ccapa");
         odontologo.setMatricula("12345");
 
-        // Act
-
-        Odontologo odontologoGuardado = odontologoServicio.guardar(odontologo);
-
-        // Assert
-
-        Assertions.assertNotNull(odontologoGuardado.getId());
-        Assertions.assertEquals("Frank", odontologoGuardado.getNombre());
-        Assertions.assertEquals("12345", odontologoGuardado.getMatricula());
-
+        return odontologoServicio.guardar(odontologo);
 
     }
-    @Test
-    public void GuardarOdontologoDuplicadoTest() {
+    private void cargarDatosSegundoOdontologo(){
         // Arrange
         Odontologo odontologo1 = new Odontologo();
         odontologo1.setNombre("Fernando");
@@ -58,29 +44,41 @@ class OdontologoServicioImplTest {
         odontologo1.setMatricula("12345"); //<----
         odontologoServicio.guardar(odontologo1);
 
-        // Act
-        Odontologo odontologoDuplicado = new Odontologo();
-        odontologoDuplicado.setNombre("Raul");
-        odontologoDuplicado.setApellido("Ccapa");
-        odontologoDuplicado.setMatricula("12345"); //<--
+    }
+    private void odontologoNoExistent(){
+        Odontologo odontologoNoExistente = new Odontologo();
+        odontologoNoExistente.setId(111L); // Un ID que no existe
+        odontologoNoExistente.setNombre("Frank2");
+        odontologoNoExistente.setApellido("Ccapa");
+        odontologoNoExistente.setMatricula("201890");
+        odontologoServicio.actualizar(odontologoNoExistente);
+    }
+    @Test
+    void guardar()  {
+
+        // Arrange -Act
+        Odontologo odontologoGuardado = cargarDatosPrimerOdontologo(); // matricula : 12345
 
         // Assert
+        Assertions.assertNotNull(odontologoGuardado.getId());
+        Assertions.assertEquals("Frank", odontologoGuardado.getNombre());
+        Assertions.assertEquals("12345", odontologoGuardado.getMatricula());
+    }
+    @Test
+    public void GuardarOdontologoMatriculaDuplicadaTest() {
+        // Arrange
+        cargarDatosSegundoOdontologo();
+
+        // Act - Assert
         //Especifica el tipo de excepción que se espera que sea lanzada cuando se ejecuta el bloque
         // de codigo dentro del lambda
-        Assertions.assertThrows(DuplicateResourceException.class, () -> {
-            odontologoServicio.guardar(odontologoDuplicado);
-        });
+        Assertions.assertThrows(DuplicateResourceException.class, this::cargarDatosPrimerOdontologo);
 
     }
     @Test
     void eliminarOdontologoExistenteTest() throws ResourceNotFoundException {
         // Arrange
-        Odontologo odontologo = new Odontologo();
-        odontologo.setNombre("Carlos");
-        odontologo.setApellido("Ccapa");
-        odontologo.setMatricula("200178");
-
-        Odontologo odontologoGuardado = odontologoServicio.guardar(odontologo);
+        Odontologo odontologoGuardado = cargarDatosPrimerOdontologo();
         Long idOdontologo = odontologoGuardado.getId();
 
         // Act
@@ -92,17 +90,8 @@ class OdontologoServicioImplTest {
     }
     @Test
     void actualizarOdontologoNoExistenteTest() {
-        // Arrange
-        Odontologo odontologoNoExistente = new Odontologo();
-        odontologoNoExistente.setId(111L); // Un ID que no existe
-        odontologoNoExistente.setNombre("Frank2");
-        odontologoNoExistente.setApellido("Ccapa");
-        odontologoNoExistente.setMatricula("201890");
-
-        // Act - Assert
-        ResourceNotFoundException thrown = assertThrows(ResourceNotFoundException.class, () -> {
-            odontologoServicio.actualizar(odontologoNoExistente);
-        });
+        // Arrange - Act - Assert
+        ResourceNotFoundException thrown = assertThrows(ResourceNotFoundException.class, this::odontologoNoExistent);
 
         assertEquals("El odontólogo con id: 111 no existe.", thrown.getMessage());
     }
