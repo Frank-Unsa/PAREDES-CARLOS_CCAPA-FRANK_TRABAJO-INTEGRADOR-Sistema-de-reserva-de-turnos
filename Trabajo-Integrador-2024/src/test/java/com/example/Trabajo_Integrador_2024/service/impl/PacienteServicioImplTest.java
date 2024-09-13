@@ -120,4 +120,61 @@ class PacienteServicioImplTest {
             pacienteServicio.buscarPorId(idPaciente);
         });
     }
+    @Test
+    void actualizarPacienteExistenteTest() throws ResourceNotFoundException, DuplicateResourceException {
+        // Arrange
+        Domicilio domicilio = new Domicilio();
+        domicilio.setCalle("Calle 3");
+        domicilio.setNumero(12345);
+        domicilio.setLocalidad("Socabaya");
+        domicilio.setProvincia("Arequipa");
+
+        Paciente paciente = new Paciente();
+        paciente.setNombre("Frank");
+        paciente.setApellido("Ccapa");
+        paciente.setDni("12345678");
+        paciente.setFechaAlta(LocalDate.parse("2024-01-01"));
+        paciente.setDomicilio(domicilio);
+
+        // Guardamos el paciente en la base de datos y nos retorna el paciente ya con id
+        Paciente pacienteGuardado = pacienteServicio.guardar(paciente);
+        Long idPaciente = pacienteGuardado.getId();
+
+        // Modificamos algunos datos del paciente
+        pacienteGuardado.setNombre("Fernando");
+        pacienteGuardado.setApellido("Usca");
+
+        // Act
+        Paciente pacienteActualizado = pacienteServicio.actualizar(pacienteGuardado);
+
+        // Assert
+        assertNotNull(pacienteActualizado);
+        assertEquals("Fernando", pacienteActualizado.getNombre());
+        assertEquals("Usca", pacienteActualizado.getApellido());
+        assertEquals("12345678", pacienteActualizado.getDni());
+    }
+    @Test
+    void actualizarPacienteNoExistenteTest() {
+        // Arrange
+        Domicilio domicilio = new Domicilio();
+        domicilio.setCalle("Calle 1");
+        domicilio.setNumero(999);
+        domicilio.setLocalidad("Soca");
+        domicilio.setProvincia("Areq");
+
+        Paciente pacienteNoExistente = new Paciente();
+        pacienteNoExistente.setId(111L); // Un ID que no existe
+        pacienteNoExistente.setNombre("Fer");
+        pacienteNoExistente.setApellido("Nando");
+        pacienteNoExistente.setDni("87654321");
+        pacienteNoExistente.setFechaAlta(LocalDate.parse("2024-01-01"));
+        pacienteNoExistente.setDomicilio(domicilio);
+
+        // Act - Assert
+        ResourceNotFoundException thrown = assertThrows(ResourceNotFoundException.class, () -> {
+            pacienteServicio.actualizar(pacienteNoExistente);
+        });
+
+        assertEquals("No se encontró el paciente con id: 111", thrown.getMessage());
+    }
 }
