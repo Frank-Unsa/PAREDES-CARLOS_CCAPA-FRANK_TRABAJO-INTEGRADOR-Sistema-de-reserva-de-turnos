@@ -51,7 +51,7 @@ window.addEventListener('load', function () {
             .then(response => response.json())
             .then(data => {
                 document.querySelector('#response').innerHTML = `<div class="alert alert-success">Turno creado exitosamente!</div>`;
-                formulario.reset();
+                document.querySelector('#fecha').value = '';
             })
             .catch(error => {
                 document.querySelector('#response').innerHTML = `<div class="alert alert-danger">Error al crear turno: ${error}</div>`;

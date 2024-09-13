@@ -29,6 +29,7 @@ window.addEventListener('load', function () {
         .then(response => response.json())
         .then(data => {
             document.getElementById('response').innerHTML = 'Turno creado con éxito. ID: ' + data.id;
+            document.getElementById('fecha').value = '';
         })
         .catch(error => {
             document.getElementById('response').innerHTML = 'Error al crear turno: ' + error;

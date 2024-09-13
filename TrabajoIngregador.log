@@ -19,3 +19,11 @@
 [2024-09-12 19:43:31] [ INFO ] [OdontologoServicioImpl:26] Odontologo guardado: 145 1455
 [2024-09-12 19:43:48] [ INFO ] [PacienteServicioImpl:25] Paciente guardado: 5 56456
 [2024-09-12 19:44:19] [ INFO ] [TurnoServicioImpl:54] El turno ha sido guardado con el Paciente con ID:1  y Odontologo: 1 con fecha: 1999-12-14
+[2024-09-12 21:50:24] [ INFO ] [OdontologoServicioImpl:26] Odontologo guardado: LUCAS peres
+[2024-09-12 21:50:45] [ INFO ] [PacienteServicioImpl:25] Paciente guardado: lkasdj 65465
+[2024-09-12 21:51:07] [ INFO ] [TurnoServicioImpl:54] El turno ha sido guardado con el Paciente con ID:1  y Odontologo: 1 con fecha: 2014-12-14
+[2024-09-12 21:53:45] [ INFO ] [TurnoServicioImpl:54] El turno ha sido guardado con el Paciente con ID:1  y Odontologo: 1 con fecha: 2015-12-14
+[2024-09-12 21:55:56] [ INFO ] [TurnoServicioImpl:54] El turno ha sido guardado con el Paciente con ID:1  y Odontologo: 1 con fecha: 1998-05-04
+[2024-09-12 21:57:10] [ INFO ] [OdontologoServicioImpl:26] Odontologo guardado: LUCA PELICA
+[2024-09-12 21:57:42] [ INFO ] [PacienteServicioImpl:25] Paciente guardado: JUAN EL QUE NO PAGA
+[2024-09-12 21:57:59] [ INFO ] [TurnoServicioImpl:54] El turno ha sido guardado con el Paciente con ID:1  y Odontologo: 1 con fecha: 2044-12-14

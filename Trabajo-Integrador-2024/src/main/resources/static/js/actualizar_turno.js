@@ -39,7 +39,7 @@ window.addEventListener('load', function () {
 
                 //document.getElementById('response').innerHTML = 'Turno actualizado con éxito. ID: ' + data.id;
                 document.getElementById('div_turno_updating').style.display = 'none';
-                formulario.reset();
+                document.querySelector('#fechaUpdate').value = '';
             })
             .catch(error => {
                 document.getElementById('response').innerHTML = 'Error al actualizar turno: ' + error;
