@@ -58,3 +58,56 @@
 [2024-09-12 20:56:39] [ INFO ] [OdontologoServicioImpl:26] Odontologo guardado: Frank Ccapa
 [2024-09-12 20:56:39] [ INFO ] [OdontologoServicioImpl:43] Odontologo guardado con ID: 2
 [2024-09-12 20:56:39] [ INFO ] [OdontologoServicioImpl:26] Odontologo guardado: Frank Ccapa
+[2024-09-12 21:05:13] [ INFO ] [PacienteServicioImpl:25] Paciente guardado: Frank Ccapa
+[2024-09-12 21:05:13] [ INFO ] [OdontologoServicioImpl:26] Odontologo guardado: Raul Ccapa
+[2024-09-12 21:05:13] [ INFO ] [TurnoServicioImpl:54] El turno ha sido guardado con el Paciente con ID:1  y Odontologo: 1 con fecha: 2024-01-15
+[2024-09-12 21:07:31] [ INFO ] [PacienteServicioImpl:25] Paciente guardado: Frank Ccapa
+[2024-09-12 21:07:31] [ INFO ] [OdontologoServicioImpl:26] Odontologo guardado: Raul Ccapa
+[2024-09-12 21:07:31] [ INFO ] [TurnoServicioImpl:54] El turno ha sido guardado con el Paciente con ID:1  y Odontologo: 1 con fecha: 2024-01-15
+[2024-09-12 21:09:46] [ INFO ] [PacienteServicioImpl:25] Paciente guardado: Frank Ccapa
+[2024-09-12 21:09:46] [ INFO ] [OdontologoServicioImpl:26] Odontologo guardado: Dr. Raul Ccapa
+[2024-09-12 21:09:46] [ INFO ] [TurnoServicioImpl:54] El turno ha sido guardado con el Paciente con ID:1  y Odontologo: 1 con fecha: 2024-01-15
+[2024-09-12 21:11:04] [ INFO ] [PacienteServicioImpl:25] Paciente guardado: Frank Ccapa
+[2024-09-12 21:11:04] [ INFO ] [OdontologoServicioImpl:26] Odontologo guardado: Dr. Raul Ccapa
+[2024-09-12 21:11:04] [ INFO ] [TurnoServicioImpl:54] El turno ha sido guardado con el Paciente con ID:1  y Odontologo: 1 con fecha: 2024-01-15
+[2024-09-12 21:11:51] [ INFO ] [PacienteServicioImpl:25] Paciente guardado: Frank Ccapa
+[2024-09-12 21:11:51] [ INFO ] [OdontologoServicioImpl:26] Odontologo guardado: Raul Ccapa
+[2024-09-12 21:11:51] [ INFO ] [TurnoServicioImpl:54] El turno ha sido guardado con el Paciente con ID:1  y Odontologo: 1 con fecha: 2024-01-15
+[2024-09-12 21:14:24] [ INFO ] [OdontologoServicioImpl:26] Odontologo guardado: Raul Ccapa
+[2024-09-12 21:15:24] [ INFO ] [PacienteServicioImpl:25] Paciente guardado: Frank Ccapa
+[2024-09-12 21:15:39] [ INFO ] [PacienteServicioImpl:25] Paciente guardado: Frank Ccapa
+[2024-09-12 21:15:39] [ INFO ] [OdontologoServicioImpl:26] Odontologo guardado: Raul Ccapa
+[2024-09-12 21:15:39] [ INFO ] [TurnoServicioImpl:54] El turno ha sido guardado con el Paciente con ID:1  y Odontologo: 1 con fecha: 2024-01-15
+[2024-09-12 21:18:55] [ INFO ] [PacienteServicioImpl:25] Paciente guardado: Frank Ccapa
+[2024-09-12 21:18:55] [ INFO ] [OdontologoServicioImpl:26] Odontologo guardado: Raul Ccapa
+[2024-09-12 21:18:55] [ INFO ] [TurnoServicioImpl:54] El turno ha sido guardado con el Paciente con ID:1  y Odontologo: 1 con fecha: 2024-01-15
+[2024-09-12 21:18:55] [ INFO ] [PacienteServicioImpl:25] Paciente guardado: Frank Ccapa
+[2024-09-12 21:18:55] [ INFO ] [OdontologoServicioImpl:26] Odontologo guardado: Raul Ccapa
+[2024-09-12 21:22:42] [ INFO ] [PacienteServicioImpl:25] Paciente guardado: Frank Ccapa
+[2024-09-12 21:22:42] [ INFO ] [OdontologoServicioImpl:26] Odontologo guardado: Raul Ccapa
+[2024-09-12 21:22:42] [ INFO ] [TurnoServicioImpl:54] El turno ha sido guardado con el Paciente con ID:1  y Odontologo: 1 con fecha: 2024-10-10
+[2024-09-12 21:22:42] [ INFO ] [TurnoServicioImpl:76] El turno con ID: 1 a sido eliminado
+[2024-09-12 21:25:07] [ INFO ] [PacienteServicioImpl:25] Paciente guardado: Frank Ccapa
+[2024-09-12 21:25:07] [ INFO ] [OdontologoServicioImpl:26] Odontologo guardado: Raul Ccapa
+[2024-09-12 21:25:08] [ INFO ] [TurnoServicioImpl:54] El turno ha sido guardado con el Paciente con ID:1  y Odontologo: 1 con fecha: 2024-01-15
+[2024-09-12 21:25:08] [ INFO ] [PacienteServicioImpl:25] Paciente guardado: Frank Ccapa
+[2024-09-12 21:25:08] [ INFO ] [OdontologoServicioImpl:26] Odontologo guardado: Raul Ccapa
+[2024-09-12 21:25:08] [ INFO ] [TurnoServicioImpl:54] El turno ha sido guardado con el Paciente con ID:2  y Odontologo: 2 con fecha: 2024-10-10
+[2024-09-12 21:25:08] [ INFO ] [TurnoServicioImpl:76] El turno con ID: 2 a sido eliminado
+[2024-09-12 21:25:08] [ INFO ] [PacienteServicioImpl:25] Paciente guardado: Frank Ccapa
+[2024-09-12 21:25:08] [ INFO ] [OdontologoServicioImpl:26] Odontologo guardado: Raul Ccapa
+[2024-09-12 21:28:06] [ INFO ] [PacienteServicioImpl:25] Paciente guardado: Frank Ccapa
+[2024-09-12 21:28:06] [ INFO ] [OdontologoServicioImpl:26] Odontologo guardado: Raul Ccapa
+[2024-09-12 21:28:06] [ INFO ] [TurnoServicioImpl:54] El turno ha sido guardado con el Paciente con ID:1  y Odontologo: 1 con fecha: 2024-10-10
+[2024-09-12 21:30:21] [ INFO ] [PacienteServicioImpl:25] Paciente guardado: Frank Ccapa
+[2024-09-12 21:30:22] [ INFO ] [OdontologoServicioImpl:26] Odontologo guardado: Raul Ccapa
+[2024-09-12 21:30:22] [ INFO ] [TurnoServicioImpl:54] El turno ha sido guardado con el Paciente con ID:1  y Odontologo: 1 con fecha: 2024-10-10
+[2024-09-12 21:30:22] [ INFO ] [PacienteServicioImpl:25] Paciente guardado: Frank Ccapa
+[2024-09-12 21:30:22] [ INFO ] [OdontologoServicioImpl:26] Odontologo guardado: Raul Ccapa
+[2024-09-12 21:30:22] [ INFO ] [TurnoServicioImpl:54] El turno ha sido guardado con el Paciente con ID:2  y Odontologo: 2 con fecha: 2024-01-15
+[2024-09-12 21:30:22] [ INFO ] [PacienteServicioImpl:25] Paciente guardado: Frank Ccapa
+[2024-09-12 21:30:22] [ INFO ] [OdontologoServicioImpl:26] Odontologo guardado: Raul Ccapa
+[2024-09-12 21:30:22] [ INFO ] [TurnoServicioImpl:54] El turno ha sido guardado con el Paciente con ID:3  y Odontologo: 3 con fecha: 2024-10-10
+[2024-09-12 21:30:22] [ INFO ] [TurnoServicioImpl:76] El turno con ID: 3 a sido eliminado
+[2024-09-12 21:30:22] [ INFO ] [PacienteServicioImpl:25] Paciente guardado: Frank Ccapa
+[2024-09-12 21:30:22] [ INFO ] [OdontologoServicioImpl:26] Odontologo guardado: Raul Ccapa
