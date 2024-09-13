@@ -1,2 +1,21 @@
 [2024-09-12 18:17:56] [ INFO ] [OdontologoServicioImpl:26] Odontologo guardado: jkadhs kjahsdkasl
 [2024-09-12 18:29:45] [ INFO ] [OdontologoServicioImpl:26] Odontologo guardado: Juanito Perez
+[2024-09-12 19:05:25] [ INFO ] [PacienteServicioImpl:25] Paciente guardado: asdas asdas
+[2024-09-12 19:05:47] [ INFO ] [OdontologoServicioImpl:26] Odontologo guardado: asda asda
+[2024-09-12 19:06:02] [ INFO ] [TurnoServicioImpl:54] El turno ha sido guardado con el Paciente con ID:1  y Odontologo: 1 con fecha: 2024-12-12
+[2024-09-12 19:06:05] [ INFO ] [TurnoServicioImpl:76] El turno con ID: 1 a sido eliminado
+[2024-09-12 19:06:12] [ INFO ] [TurnoServicioImpl:54] El turno ha sido guardado con el Paciente con ID:1  y Odontologo: 1 con fecha: 2024-12-14
+[2024-09-12 19:11:15] [ INFO ] [OdontologoServicioImpl:26] Odontologo guardado: lñaskd asldaksl
+[2024-09-12 19:11:35] [ INFO ] [PacienteServicioImpl:25] Paciente guardado: sadlkas 45
+[2024-09-12 19:11:44] [ INFO ] [TurnoServicioImpl:54] El turno ha sido guardado con el Paciente con ID:1  y Odontologo: 1 con fecha: 1998-12-12
+[2024-09-12 19:22:34] [ INFO ] [PacienteServicioImpl:25] Paciente guardado: sjadha jaslkdja
+[2024-09-12 19:24:19] [ INFO ] [PacienteServicioImpl:25] Paciente guardado: asda 45
+[2024-09-12 19:28:00] [ INFO ] [PacienteServicioImpl:25] Paciente guardado: asjkdh kjhkj
+[2024-09-12 19:38:56] [ INFO ] [OdontologoServicioImpl:26] Odontologo guardado: Juan Perez
+[2024-09-12 19:39:32] [ INFO ] [PacienteServicioImpl:25] Paciente guardado: LUCAS RIOS
+[2024-09-12 19:39:59] [ INFO ] [TurnoServicioImpl:54] El turno ha sido guardado con el Paciente con ID:1  y Odontologo: 1 con fecha: 1998-12-14
+[2024-09-12 19:40:56] [ INFO ] [OdontologoServicioImpl:26] Odontologo guardado: oDON 2 JAHDSAJHD
+[2024-09-12 19:41:10] [ INFO ] [TurnoServicioImpl:54] El turno ha sido guardado con el Paciente con ID:1  y Odontologo: 2 con fecha: 1444-12-12
+[2024-09-12 19:43:31] [ INFO ] [OdontologoServicioImpl:26] Odontologo guardado: 145 1455
+[2024-09-12 19:43:48] [ INFO ] [PacienteServicioImpl:25] Paciente guardado: 5 56456
+[2024-09-12 19:44:19] [ INFO ] [TurnoServicioImpl:54] El turno ha sido guardado con el Paciente con ID:1  y Odontologo: 1 con fecha: 1999-12-14

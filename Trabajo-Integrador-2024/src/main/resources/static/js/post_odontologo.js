@@ -56,12 +56,10 @@ window.addEventListener('load', function () {
                      resetUploadForm();})
     });
 
-
     function resetUploadForm(){
         document.querySelector('#nombre').value = "";
         document.querySelector('#apellido').value = "";
-         document.querySelector('#matricula').value = "";
-
+        document.querySelector('#matricula').value = "";
     }
 
     (function(){

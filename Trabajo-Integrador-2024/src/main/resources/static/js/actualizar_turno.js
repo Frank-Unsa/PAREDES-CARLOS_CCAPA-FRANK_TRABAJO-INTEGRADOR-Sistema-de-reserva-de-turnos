@@ -2,6 +2,7 @@ window.addEventListener('load', function () {
     cargarPacientes();
     cargarOdontologos();
     const formulario = document.getElementById('update_turno_form');
+    const cancelarButton = document.getElementById('cancelar_actualizacion');
 
     formulario.addEventListener('submit', function (event) {
         event.preventDefault();
@@ -75,9 +76,6 @@ window.addEventListener('load', function () {
             .catch(error => console.error('Error al cargar odontólogos:', error));
     }
 
-
-
-
     window.editarTurno = function(id) {
         const url = `/turnos/${id}`;
         const settings = {
@@ -94,5 +92,15 @@ window.addEventListener('load', function () {
             })
             .catch(error => console.error('Error al cargar turno:', error));
     };
+
+    cancelarButton.addEventListener('click', function () {
+        // Limpiamos los campos del formulario
+            document.querySelector('#turno_id').value = '';
+            document.querySelector('#pacienteSelectUpdate').value = '';
+            document.querySelector('#odontologoSelectUpdate').value = '';
+            document.querySelector('#fechaUpdate').value = '';
+            // Oculta el formulario de actualización
+            document.querySelector('#div_turno_updating').style.display = "none";
+            });
 
 });

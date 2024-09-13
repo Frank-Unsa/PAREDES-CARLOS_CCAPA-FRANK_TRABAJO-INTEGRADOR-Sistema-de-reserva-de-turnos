@@ -48,7 +48,6 @@ window.addEventListener('load', function () {
 
                 // Ocultar el formulario de actualización
                 document.querySelector('#div_paciente_updating').style.display = "none";
-                formulario.reset();
             })
             .catch(error => {
                 console.error('Error al actualizar el paciente:', error);
@@ -59,7 +58,16 @@ window.addEventListener('load', function () {
 
     // Evento para el botón de cancelar
     cancelarButton.addEventListener('click', function () {
-        document.querySelector('#update_paciente_form').reset();
+        document.querySelector('#paciente_id').value = '';
+        document.querySelector('#nombre').value = '';
+        document.querySelector('#apellido').value = '';
+        document.querySelector('#dni').value = '';
+        document.querySelector('#fechaAlta').value = '';
+        document.querySelector('#domicilio_id').value = '';
+        document.querySelector('#calle').value = '';
+        document.querySelector('#numero').value = '';
+        document.querySelector('#localidad').value = '';
+        document.querySelector('#provincia').value = '';
         document.querySelector('#div_paciente_updating').style.display = "none";
 
     });

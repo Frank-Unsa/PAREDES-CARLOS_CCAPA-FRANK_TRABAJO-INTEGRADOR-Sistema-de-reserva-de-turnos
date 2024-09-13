@@ -35,10 +35,22 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(data => {
             // Muestra una respuesta exitosa
             document.querySelector('#response').innerHTML = `<div class="alert alert-success">Paciente creado con éxito: ${data.nombre} ${data.apellido}</div>`;
+            resetUploadForm();
         })
         .catch(error => {
             // Muestra un mensaje de error
             document.querySelector('#response').innerHTML = `<div class="alert alert-danger">Error: ${error.message}</div>`;
         });
     });
+
+    function resetUploadForm(){
+            document.querySelector('#nombre').value = "";
+            document.querySelector('#apellido').value = "";
+            document.querySelector('#dni').value = "";
+            document.querySelector('#fechaAlta').value= "";
+            document.querySelector('#calle').value = "";
+            document.querySelector('#numero').value = "";
+            document.querySelector('#localidad').value = "";
+            document.querySelector('#provincia').value = "";
+        }
 });
