@@ -2,6 +2,7 @@ package com.example.Trabajo_Integrador_2024.service.impl;
 
 import com.example.Trabajo_Integrador_2024.entity.Odontologo;
 import com.example.Trabajo_Integrador_2024.exception.DuplicateResourceException;
+import com.example.Trabajo_Integrador_2024.exception.ResourceNotFoundException;
 import com.example.Trabajo_Integrador_2024.repository.IOdontologoRepository;
 import com.example.Trabajo_Integrador_2024.service.IOdontologoServicio;
 import org.junit.jupiter.api.Assertions;
@@ -71,4 +72,39 @@ class OdontologoServicioImplTest {
         });
 
     }
+    @Test
+    void eliminarOdontologoExistenteTest() throws ResourceNotFoundException {
+        // Arrange
+        Odontologo odontologo = new Odontologo();
+        odontologo.setNombre("Carlos");
+        odontologo.setApellido("Ccapa");
+        odontologo.setMatricula("200178");
+
+        Odontologo odontologoGuardado = odontologoServicio.guardar(odontologo);
+        Long idOdontologo = odontologoGuardado.getId();
+
+        // Act
+        odontologoServicio.eliminar(idOdontologo);
+
+        // Assert
+        assertThrows(ResourceNotFoundException.class, () -> odontologoServicio.eliminar(idOdontologo),
+                "No se encontro el odontologo con id: " + idOdontologo);
+    }
+    @Test
+    void actualizarOdontologoNoExistenteTest() {
+        // Arrange
+        Odontologo odontologoNoExistente = new Odontologo();
+        odontologoNoExistente.setId(111L); // Un ID que no existe
+        odontologoNoExistente.setNombre("Frank2");
+        odontologoNoExistente.setApellido("Ccapa");
+        odontologoNoExistente.setMatricula("201890");
+
+        // Act - Assert
+        ResourceNotFoundException thrown = assertThrows(ResourceNotFoundException.class, () -> {
+            odontologoServicio.actualizar(odontologoNoExistente);
+        });
+
+        assertEquals("El odontólogo con id: 111 no existe.", thrown.getMessage());
+    }
+
 }
