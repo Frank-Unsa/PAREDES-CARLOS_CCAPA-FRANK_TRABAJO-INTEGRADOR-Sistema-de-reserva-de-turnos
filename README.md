@@ -67,4 +67,4 @@ Este sistema permite administrar la reserva de turnos en una clínica odontológ
 
 1️⃣ Clonar el repositorio:  
 ```sh
-git clone https://github.com/tu-usuario/sistema-reserva-turnos.git
+git clone https://github.com/Frank-Unsa/PAREDES-CARLOS_CCAPA-FRANK_TRABAJO-INTEGRADOR-Sistema-de-reserva-de-turnos.git
